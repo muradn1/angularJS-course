@@ -37,7 +37,9 @@
         <input type="checkbox" ng-model="person.haveBike" name="vehicle1" value="Bike"> I have a bike<br>
         <br>
         <br>
-        <pr>Person = {{person | json}}</pr>
+        <button ng-click="isVisible = !isVisible">toggle printing person!</button>
+        <br>
+        <pr ng-show="isVisible">Person = {{person | json}}</pr>
     </div>
     <br>
 </body>

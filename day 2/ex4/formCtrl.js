@@ -10,11 +10,11 @@ module.controller("formCtrl", FormCtrl)
 // DI dependency injection - IOC
 function FormCtrl($scope) {
     $scope.person = new Person();
-    
+    $scope.isVisible = false;
+
     $scope.resetName = function() {
         $scope.person.name='';  
     }
-
 }
 
 class Person {
