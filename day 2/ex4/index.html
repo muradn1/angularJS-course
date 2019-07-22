@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>Clock!</title>
+    <script src="angular.js"></script>
+    <script src="bootstrap.js"></script>
+
+    <script src="formCtrl.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="formCtrl">
+        <h3>Name</h3>
+        <input type="text" ng-model="person.name" placeholder="Enter your name" />
+        <h3>age</h3>
+        <input type="number" ng-model="person.age" placeholder="Enter your age">
+        <h3>Password</h3>
+        <input type="password" ng-model="person.Password" placeholder="Enter your Password">
+        <br>
+        <h3>gender</h3>
+        <input type="radio" ng-model="person.gender" value="male"> Male<br>
+        <input type="radio" ng-model="person.gender" value="female"> Female<br>
+        <input type="radio" ng-model="person.gender" value="other"> Other
+        <br>
+        <h3>vehicle kind</h3>
+        <select id="kind" ng-model="person.vehicleKind">
+            <option value="volvo">Volvo</option>
+            <option value="Mitsubishi">Mitsubishi</option>
+            <option value="Honda">Honda</option>
+            <option value="Ford">Ford</option>
+        </select>
+        <br>
+
+        <br>
+        <input type="checkbox" ng-model="person.haveBike" name="vehicle1" value="Bike"> I have a bike<br>
+        <br>
+        <br>
+        <pr>Person = {{person | json}}</pr>
+    </div>
+    <br>
+</body>
+
+</html>
