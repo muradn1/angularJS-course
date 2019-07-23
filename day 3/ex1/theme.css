@@ -1,0 +1,12 @@
+.calc-row{
+    display: flex;
+}
+.calc-row > *{
+    margin: 0 10px;
+}
+
+.sign-to-choose{
+    display: block;
+    margin-left: 184px;
+    margin-top: 5px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+
+<head>
+    <title>Clock!</title>
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="angular.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="calcCtrl.js"></script>
+    <script src="calcChildCtrl.js"></script>
+    <script src="calcBrotherCtrl.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="calcCtrl">
+        <div class="calc-row">
+            <input type="number" ng-model="num1" placeholder="Enter first num">
+            <div> {{operator}} </div>
+            <input type="number" ng-model="num2" placeholder="Enter second num">
+            <div> = </div>
+            <div ng-controller="calcChildCtrl">
+                <span>{{result()}}</span>
+            </div>
+        </div>
+        <button ng-click="operator = '+'" class="sign-to-choose">+</button>
+        <button ng-click="operator = '-'" class="sign-to-choose">-</button>
+        <button ng-click="operator='*'" class="sign-to-choose">*</button>
+        <button ng-click="operator='/'" class="sign-to-choose">/</button>
+    </div>
+    <div ng-controller="calcBrotherCtrl">
+            <button ng-click="calcResult()">calc result</button>
+            <span>{{result}}</span>
+
+    </div>
+</body>
+
+</html>
