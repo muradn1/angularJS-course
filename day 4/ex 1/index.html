@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>AandB!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.js"></script>
+    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="elif.js"></script>
+
+
+    <script src="bootstrap.js"></script>
+
+    <script src="globalconst.service.js"></script>
+    <script src="data.service.js"></script>
+    <script src="a.service.js"></script>
+    <script src="b.service.js"></script>
+
+    <script src="input.ctrl.js"></script>
+    <script src="sum.ctrl.js"></script>
+    <script src="a.ctrl.js"></script>
+    <script src="b.ctrl.js"></script>
+    <script src="div.ctrl.js"></script>
+    <script src="history.ctrl.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="inputCtrl">
+        <div><span>a : </span><span><input type="number" ng-model="ab.a" placeholder="Enter a" /></span></div>
+        <div><span>b : </span><span><input type="number" ng-model="ab.b" placeholder="Enter b" /></span></div>
+
+        <span>
+            <input type="radio" ng-model="ab.color" value="green-yellow"> green-yellow
+            <input type="radio" ng-model="ab.color" value="blue-brown"> blue-brown
+        </span>
+    </div>
+    <br>
+    <div ng-controller="sumCtrl">
+        <span ng-class="getClass()">a + b = {{ab.a + ab.b}}</span>
+    </div>
+    <br>
+    <div ng-controller="aCtrl">
+        <span><button ng-click="print1toA()">Click to print 1 to A</button>
+        <span ng-if="errorMessage">{{errorMessage}}</span>
+        <span ng-else></span>
+        <span ng-repeat="x in array1ToA">{{x}},</span>
+        </span>
+    </div>
+    <br>
+    <div ng-controller="bCtrl">
+        <span><button ng-click="printBto1()">Click to print B to 1</button> </span><span ng-bind="strBto1"></span>
+    </div>
+    <br>
+    <div ng-controller="divCtrl">
+        <div ng-if="ab.b == 0">{{errorMessage}}</div>
+        <div ng-else>a / b = {{ab.a / ab.b}}</div>
+    </div>
+    <br>
+    <div ng-controller="historyCtrl">
+        <div>a : {{aHistoryStr}}</div>
+        <div>b : {{bHistoryStr}}</div>
+    </div>
+    <br>
+</body>
+
+</html>
