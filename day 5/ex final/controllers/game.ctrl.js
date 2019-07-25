@@ -1,20 +1,16 @@
 module.controller("gameCtrl", GameCtrl);
 
 // DI dependency injection - IOC
-function GameCtrl($scope, $timeout, dataService) {
+function GameCtrl($scope, $timeout, dataService, gameService) {
 
     $scope.data = dataService.data;
 
-    $scope.gameMatrix = new Array(4).fill(0).map(() => new Array(4).fill(0));
+    $scope.gameMatrix = gameService.generateMatrixValues();
 
     $scope.showCellsFlags = new Array(4).fill(false).map(() => new Array(4).fill(false));
 
     let firstChoice = { val: -1, i: -1, j: -1 };
     let secondChoice = { val: -1, i: -1, j: -1 };
-
-    $scope.isToShowCell = (i, j) => {
-        return $scope.showCellsFlags[i][j];
-    }
 
     $scope.cellClicked = (val, i, j) => {
         $scope.showCellsFlags[i][j] = true;
@@ -39,7 +35,7 @@ function GameCtrl($scope, $timeout, dataService) {
                     $scope.showCellsFlags[firstChoice.i][firstChoice.j] = false;
                     $scope.showCellsFlags[secondChoice.i][secondChoice.j] = false;
 
-                    switchUser();
+                    gameService.switchUser();
                 }, 1000);
             }
 
@@ -47,29 +43,4 @@ function GameCtrl($scope, $timeout, dataService) {
             secondChoice.val = -1;
         }
     }
-
-    let switchUser = () => {
-        $scope.data.currentUser = $scope.data.currentUser == "user1" ? "user2" : "user1";
-    }
-
-    let generateValues = () => {
-        let getRandomIndexs = () => {
-            let i = Math.floor(Math.random() * 4);
-            let j = Math.floor(Math.random() * 4);
-
-            if (!$scope.gameMatrix[i][j]) {
-                return { i, j };
-            }
-
-            return getRandomIndexs();
-        }
-        for (let num = 1; num <= 8; num++) {
-            var { i, j } = getRandomIndexs();
-            $scope.gameMatrix[i][j] = num;
-            var { i, j } = getRandomIndexs();
-            $scope.gameMatrix[i][j] = num;
-        }
-    }
-
-    generateValues();
 }
