@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="dataApp">
+
+<head>
+    <title>AandB!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="angular.js"></script>
+    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="elif.js"></script>
+    
+    <script src="bootstrap.js"></script>
+
+    <script src="services/data.service.js"></script>
+
+    <script src="controllers/game.ctrl.js"></script>
+    <script src="controllers/results.ctrl.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="gameCtrl">
+        <div>cuurent user: {{data.currentUser}}</div>
+        <br>
+
+        <div ng-repeat="arr in gameMatrix track by $index">
+            <span class="cell" ng-repeat="cell in arr track by $index">
+                <span ng-click="cellClicked(cell,$parent.$index,$index)">
+                    <span ng-if="!showCellsFlags[$parent.$index][$index]">X</span>
+                    <span ng-else>{{cell}}</span>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div ng-controller="resultsCtrl">
+        <div class="user">
+            user1:
+            <div>guesses : {{data.results["user1"].gusses}}</div>
+            <div>correct : {{data.results["user1"].correct}}</div>
+        </div>
+        <div class="user">
+            user2:
+            <div>guesses : {{data.results["user2"].gusses}}</div>
+            <div>correct : {{data.results["user2"].correct}}</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

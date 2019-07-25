@@ -1,0 +1,11 @@
+.cell{
+    margin-right: 10px;
+}
+
+.user{
+    margin-top: 10px;
+}
+
+.user > div{
+    margin-left: 5px;
+}
